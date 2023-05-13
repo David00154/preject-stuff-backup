@@ -1,0 +1,14 @@
+/* Write your global styles here, in PostCSS syntax */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Zanabazar+Square&display=swap');
+@tailwind base;
+
+@layer base {
+	html,
+	body {
+		@apply w-full h-full overflow-x-hidden;
+		font-family: 'Noto Sans Zanabazar Square', sans-serif;
+	}
+}
+
+@tailwind components;
+@tailwind utilities;

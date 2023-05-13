@@ -1,0 +1,44 @@
+/**
+ * Contract source: https://git.io/JfefG
+ *
+ * Feel free to let us know via PR, if you find something broken in this contract
+ * file.
+ */
+
+import Delivery from 'App/Models/Delivery'
+import User from 'App/Models/User'
+
+declare module '@ioc:Adonis/Core/Event' {
+  /*
+  |--------------------------------------------------------------------------
+  | Define typed events
+  |--------------------------------------------------------------------------
+  |
+  | You can define types for events inside the following interface and
+  | AdonisJS will make sure that all listeners and emit calls adheres
+  | to the defined types.
+  |
+  | For example:
+  |
+  | interface EventsList {
+  |   'new:user': UserModel
+  | }
+  |
+  | Now calling `Event.emit('new:user')` will statically ensure that passed value is
+  | an instance of the the UserModel only.
+  |
+  */
+  enum DeliveryEvent {
+    ACCEPTED,
+  }
+  interface EventsList {
+    //
+    'delivery:accepted': { delivery: Delivery | null | undefined; user: User | null | undefined }
+    'delivery:started': { delivery: Delivery | null | undefined; user: User | null | undefined }
+    'delivery:ended': { delivery: Delivery | null | undefined; user: User | null | undefined }
+    'delivery:location_updated': {
+      delivery: Delivery | null | undefined
+      user: User | null | undefined
+    }
+  }
+}
